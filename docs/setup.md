@@ -81,7 +81,22 @@ https://github.com/
 
 Guardar el nombre de usuario seleccionado, ya que será necesario para acceder al repositorio del proyecto.
 
+## Activar autenticación de dos factores (2FA)
+
+GitHub requiere autenticación de dos factores para proteger las cuentas.
+
+Se recomienda utilizar la aplicación GitHub Mobile.
+
+Una vez configurada la cuenta:
+
+1. Ir a Settings.
+2. Seleccionar Password and authentication.
+3. Activar Two-factor authentication.
+4. Seguir las instrucciones mostradas por GitHub.
+5. Guardar los códigos de recuperación en un lugar seguro.
+
 ---
+
 ## 5. Configurar Git
 
 Abrir **Git Bash** y ejecutar:
