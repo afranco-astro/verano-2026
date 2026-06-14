@@ -2,6 +2,18 @@
 
 Este documento describe los pasos necesarios para preparar el entorno de desarrollo que se utilizará durante el proyecto.
 
+## Terminal utilizada durante el proyecto
+
+Durante este proyecto se utilizará **Git Bash**, el cual se instala automáticamente junto con Git para Windows.
+
+La mayoría de los ejemplos y comandos mostrados en esta guía deberán ejecutarse desde Git Bash.
+
+Para abrir Git Bash:
+
+* Menú Inicio → Git Bash
+
+La terminal mostrará una ventana similar a un entorno Linux, lo que facilitará el uso de herramientas y ejemplos que se utilizarán durante el proyecto.
+
 ## 1. Instalar Python
 
 Descargar e instalar Python 3.11 desde:
@@ -70,10 +82,9 @@ https://github.com/
 Guardar el nombre de usuario seleccionado, ya que será necesario para acceder al repositorio del proyecto.
 
 ---
-
 ## 5. Configurar Git
 
-Abrir una terminal (PowerShell) y ejecutar:
+Abrir **Git Bash** y ejecutar:
 
 ```bash
 git config --global user.name "Nombre Apellido"
@@ -86,13 +97,19 @@ Verificar la configuración:
 git config --list
 ```
 
----
+Confirmar que aparecen los campos:
 
+```text
+user.name
+user.email
+```
+
+---
 ## 6. Generar una llave SSH
 
 GitHub utilizará autenticación mediante SSH para acceder al repositorio del proyecto.
 
-Abrir una terminal (PowerShell) y ejecutar:
+Abrir **Git Bash** y ejecutar:
 
 ```bash
 ssh-keygen -t ed25519
@@ -103,17 +120,23 @@ Presionar ENTER para aceptar las opciones predeterminadas.
 Los archivos generados normalmente se almacenarán en:
 
 ```text
-C:\Users\<usuario>\.ssh\
+~/.ssh/
+```
+
+y deberán existir los archivos:
+
+```text
+id_ed25519
+id_ed25519.pub
 ```
 
 ---
-
 ## 7. Mostrar la llave pública
 
-Ejecutar:
+Abrir **Git Bash** y ejecutar:
 
 ```bash
-type $env:USERPROFILE\.ssh\id_ed25519.pub
+cat ~/.ssh/id_ed25519.pub
 ```
 
 Se mostrará un texto similar a:
@@ -138,7 +161,7 @@ Pegar el contenido de la llave pública y guardar.
 
 ## 9. Verificar la conexión
 
-Ejecutar:
+Abrir **Git Bash** y ejecutar:
 
 ```bash
 ssh -T git@github.com
@@ -161,6 +184,8 @@ Hi usuario! You've successfully authenticated...
 ---
 
 ## 10. Acceder al repositorio del proyecto
+
+Abrir **Git Bash**.
 
 Clonar el repositorio:
 
