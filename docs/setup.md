@@ -59,7 +59,7 @@ Descargar e instalar Git para Windows:
 
 https://git-scm.com/download/win
 
-Después de la instalación, abrir una terminal y verificar:
+Después de la instalación, abrir una terminal Git Bash y verificar:
 
 ```bash
 git --version
