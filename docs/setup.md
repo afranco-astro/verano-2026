@@ -202,7 +202,25 @@ Hi usuario! You've successfully authenticated...
 
 Abrir **Git Bash**.
 
-Clonar el repositorio:
+Antes de descargar el repositorio, navegar al directorio donde deseas almacenarlo. Por ejemplo, si deseas guardarlo dentro de la carpeta *Documentos*:
+
+```bash
+cd ~/Documents
+```
+
+Para verificar tu ubicación actual puedes utilizar:
+
+```bash
+pwd
+```
+
+Y para listar el contenido del directorio actual:
+
+```bash
+ls
+```
+
+Una vez ubicado en el directorio deseado, clonar el repositorio:
 
 ```bash
 git clone git@github.com:afranco-astro/verano-2026.git
