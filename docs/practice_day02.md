@@ -43,7 +43,13 @@ rechazada aunque el Broker parezca estar corriendo.
 
 Para esta práctica necesitas crear un archivo de configuración mínimo. Investiga:
 
-- ¿Qué directivas de configuración permiten conexiones anónimas en Mosquitto 2.x?
+- ¿Qué directivas de configuración permiten conexiones anónimas en Mosquitto 2.2.1?
+Primero es necesario dos comandos y tener una dirección IP la mayoría utiliza el 1883 para poder mantener el anónimo, entedí que ese es un puerto necesario y se utiliza para esto el comando 
+
+listener
+
+También necesitamos el comando "allow_anonymous" para poder entrar sin necesidad de contraseñas ni usuarios.
+
 - ¿Cómo se le indica a Mosquitto que use un archivo de configuración específico?
 
 Las dos directivas que necesitas son `listener` y `allow_anonymous`.
@@ -110,6 +116,11 @@ Observa qué ocurre en la ventana donde ejecutaste `mosquitto_sub`.
 **Pregunta:** ¿Qué tuvieron en común el comando de publicación y el de suscripción para que
 el mensaje llegara?
 
+**
+Aparentemente no se puede usar sin el  **-t observatory/weather** 
+
+-t esto principalmente porque sin el topic no sabe el programa a donde mandar la información que se esta teniendo como mensaje en -m, hice la prueba utilizando solamentente el **mosquitto_pub -m "Temperature 12.5 C"** pero me salía un error y me di cuenta que era porque el programa no sabía a donde mandarlo ya que no tenía el topic así que lo agregue con -t
+**
 ---
 
 ## Parte 5. Publicar en un Topic diferente
@@ -122,6 +133,7 @@ mosquitto_pub -t observatory/camera -m "Exposure Started"
 ```
 
 **Pregunta:** ¿Qué ocurrió en la ventana de `mosquitto_sub`? ¿Por qué?
+**Nada, lo suponía por justo no es un topic con el que este configurado el suscribe así que tiene sentido que no haya recibido ningún mensaje como lo hizo con el de la temperatura.**
 
 Escribe tu respuesta antes de continuar.
 
@@ -138,6 +150,7 @@ mosquitto_pub -t observatory/camera -m "Exposure Finished"
 ```
 
 Observa el resultado y compáralo con lo que ocurrió en la Parte 5.
+**Teóricamente sabía que si se iba a compartir el mensaje pero al inicio no me salió el mensaje pero luego vi que era por un error al escribir camera así que no salía pero al final si mandó el mensaje supongo que ahora es poque si esta suscrito a ese topic y por eso ahora se ve.**
 
 ---
 
@@ -158,6 +171,7 @@ Luego realiza el siguiente experimento:
 3. Observa qué mensajes recibe el Subscriber.
 
 **Pregunta:** ¿Qué mensajes llegaron y cuáles no? ¿Por qué?
+**llegaron solo los primeros dos quiero suponer que es porque los dos primeros si tienen el camara y el último no, aun no estoy muy segura como funciona ese comodines**
 
 > **Nota:** Los Topics en MQTT son sensibles a mayúsculas y minúsculas.
 > `Observatory/Camera` y `observatory/camera` son Topics distintos.
@@ -191,16 +205,20 @@ Una vez conectado:
 
 1. ¿Cuál fue la función del Broker durante la práctica? ¿Qué pasaría si el Broker se
    detuviera mientras hay Publishers y Subscribers activos?
+   **El broker es importante porque era el que transmitía los mensajes entre ambos, entre el publisher y el subscriber, si no estuviera activo supongo que pasaría lo mismo que cuando no tenía bien configurado el topic y no llegaría el mensaje del publisher al subscriber.**
 
 2. ¿Qué ocurre cuando un Publisher publica en un Topic para el cual no existen Subscribers
    en ese momento?
+   **Pues simplemente lo ejecuta pero no aparece en ningún lado como si no existiera**
 
 3. ¿Por qué los mensajes de `observatory/camera` no llegaron a la suscripción de
    `observatory/weather`?
-
+   **Porque no tenían la misma configuración de canales** 
 4. ¿En qué situaciones sería útil usar el comodín `#`? ¿Y cuándo sería un problema usarlo?
+**supongo que  es necesario cuando se tienen muchas subcategorías de un mismo canal pero igual si no te interesan todos sería mucha información inesesaria por eso son importantes los #**
 
 5. ¿Qué ventaja tiene MQTT Explorer sobre `mosquitto_sub` para monitorear el sistema?
+
 
 ---
 
@@ -209,3 +227,5 @@ Una vez conectado:
 Escribe un párrafo de entre 5 y 10 líneas describiendo el recorrido completo de un mensaje
 MQTT: desde que el Publisher lo envía, cómo lo procesa el Broker, y cómo llega al Subscriber.
 Incluye en tu descripción el papel que juegan los Topics en ese proceso.
+
+**Este proceso inicia cuando el publisher envía un mensaje el cual debe específicamente tener una categoría en este caso los topics para que el broker pueda determinar a quien le interesa ese mensaje, luego que llega el broker este lrevisa a cual de sus suscriber le interesa ese topic activado para luego mandar esa información a esos subscribers que la requieren y estan con esos topics. Estos topics son importantes principalmente para determinar el acomplamiento que se debe realizar para pasar la información.**
