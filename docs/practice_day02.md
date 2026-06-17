@@ -215,7 +215,7 @@ Una vez conectado:
 **supongo que  es necesario cuando se tienen muchas subcategorías de un mismo canal pero igual si no te interesan todos sería mucha información inesesaria por eso son importantes los #**
 
 5. ¿Qué ventaja tiene MQTT Explorer sobre `mosquitto_sub` para monitorear el sistema?
-
+**Que puedes ir viendo directamente cuanto tiempo en que momento pasa la transmisión de mensajes dejando un registro, que pasa más directamente sin necesidad de comandos por si te equivocas.** 
 
 ---
 
