@@ -44,13 +44,12 @@ rechazada aunque el Broker parezca estar corriendo.
 Para esta práctica necesitas crear un archivo de configuración mínimo. Investiga:
 
 - ¿Qué directivas de configuración permiten conexiones anónimas en Mosquitto 2.2.1?
-Primero es necesario dos comandos y tener una dirección IP la mayoría utiliza el 1883 para poder mantener el anónimo, entedí que ese es un puerto necesario y se utiliza para esto el comando 
-
+**Primero es necesario dos comandos y tener una dirección IP la mayoría utiliza el 1883 para poder mantener el anónimo, entedí que ese es un puerto necesario y se utiliza para esto el comando 
 listener
-
 También necesitamos el comando "allow_anonymous" para poder entrar sin necesidad de contraseñas ni usuarios.
 
 - ¿Cómo se le indica a Mosquitto que use un archivo de configuración específico?
+**segun las cosas que nos dice el help es con el -c, pero investigando más puedes ponerle después la ruta que tiene ese archivo después del -c**
 
 Las dos directivas que necesitas son `listener` y `allow_anonymous`.
 
@@ -116,11 +115,9 @@ Observa qué ocurre en la ventana donde ejecutaste `mosquitto_sub`.
 **Pregunta:** ¿Qué tuvieron en común el comando de publicación y el de suscripción para que
 el mensaje llegara?
 
-**
-Aparentemente no se puede usar sin el  **-t observatory/weather** 
+**Aparentemente no se puede usar sin el  -t observatory/weather; -t esto principalmente porque sin el topic no sabe el programa a donde mandar la información que se esta teniendo como mensaje en -m, hice la prueba utilizando solamentente el mosquitto_pub -m "Temperature 12.5 C" pero me salía un error y me di cuenta que era porque el programa no sabía a donde mandarlo ya que no tenía el topic así que lo agregue con -t**
 
--t esto principalmente porque sin el topic no sabe el programa a donde mandar la información que se esta teniendo como mensaje en -m, hice la prueba utilizando solamentente el **mosquitto_pub -m "Temperature 12.5 C"** pero me salía un error y me di cuenta que era porque el programa no sabía a donde mandarlo ya que no tenía el topic así que lo agregue con -t
-**
+
 ---
 
 ## Parte 5. Publicar en un Topic diferente
