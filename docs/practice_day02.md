@@ -157,6 +157,9 @@ En la presentación viste el topic `observatory/camera/#`. El símbolo `#` es un
 que representa cualquier nivel de jerarquía a partir de ese punto.
 
 Investiga qué comodines soporta MQTT y cuál es la diferencia entre `#` y `+`.
+**# -> Este es un comodín que solo tiene una regla para ser utilizado y es que debe colocarse obligatoriamente al final del topic y debe ir precedido por una barra diagonal /, este se utiliza para identificar el nivel de jerarquía con el que se puede traer toda la información de ciertos topics.**
+
+ **+ ->  Se puede colocar en cualquier parte de la ruta (al inicio, en medio o al final) y puede usarse más de una vez en el mismo comando. No obstante, solo sustituye a una carpeta o nivel divisorio, teniendo así más multiplicidad al obtener información.**
 
 Luego realiza el siguiente experimento:
 
@@ -215,7 +218,7 @@ Una vez conectado:
 **supongo que  es necesario cuando se tienen muchas subcategorías de un mismo canal pero igual si no te interesan todos sería mucha información inesesaria por eso son importantes los #**
 
 5. ¿Qué ventaja tiene MQTT Explorer sobre `mosquitto_sub` para monitorear el sistema?
-**Que puedes ir viendo directamente cuanto tiempo en que momento pasa la transmisión de mensajes dejando un registro, que pasa más directamente sin necesidad de comandos por si te equivocas.** 
+**Que puedes ir viendo directamente cuanto tiempo en que momento pasa la transmisión de mensajes dejando un registro, que pasa más directamente sin necesidad de comandos por si te equivocas. Además es más intuitivo de donde poner el mensaje y para saber si ya esta corriendo el mqtt o si no, como el mosquitto que es más complicado saberlo.** 
 
 ---
 
