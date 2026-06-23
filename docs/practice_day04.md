@@ -22,6 +22,22 @@ Verifica que tienes listo:
 
 ## Parte 1. Actualizar el repositorio
 
+> **Configuración de Git (solo una vez por repositorio):**
+> Configura que `git pull` use rebase en lugar de merge. Esta configuración es local al
+> repositorio — no se aplica a otros proyectos en tu máquina.
+>
+> ```bash
+> git config pull.rebase true
+> git config rebase.autoStash true
+> ```
+>
+> - `pull.rebase true` — al hacer `git pull`, tus commits locales se reacomodan encima de
+>   los cambios remotos en lugar de crear un commit de merge. Mantiene el historial lineal
+>   y más fácil de leer.
+> - `rebase.autoStash true` — si tienes cambios sin commitear cuando haces `git pull`, el
+>   rebase normalmente fallaría. Esta opción guarda tus cambios temporalmente (stash),
+>   hace el rebase, y los restaura al terminar — automáticamente.
+
 ```bash
 git pull
 source .venv/Scripts/activate
