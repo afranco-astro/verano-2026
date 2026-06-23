@@ -8,7 +8,7 @@ client= mqtt.Client() #CONECTA AL BROKER
 client.connect(BROKER, PORT) #CONECTA AL BROKER
 
 #PUBLICAR MENSAJE
-client.publish(TOPIC, "Temperature: 25°C")
-
+client.publish(TOPIC, "Temperature: 25 C")
+print("mensaje publicado")
 #Disconnect from broker
 client.disconnect()
