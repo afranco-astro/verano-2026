@@ -164,12 +164,16 @@ Verifica que el mensaje aparece en la terminal del Subscriber.
 ## Parte 6. Experimentar
 
 - Cambia el Topic del Publisher sin cambiar el del Subscriber. ¿Qué pasa?
+**Se ejecuta correctamente el programa de publisher pero no llega el mensaje al subscriber debido a que no tienen el mimo tópico**
+
 - Ejecuta el Publisher varias veces seguidas mientras el Subscriber sigue corriendo.
+**se envían los mensajes que se fueron cambiando en el publisher si mantiene el mismo tópico**
+
 - Detén el Subscriber con `Ctrl+C`, modifica el mensaje que imprime, y vuelve a
   ejecutarlo.
 - Intenta suscribirte usando un comodín (`observatory/#`) y publica en varios topics
   distintos bajo `observatory/`.
-
+**Si en el subscriber se usa el # entonces llegan los mensajes de todo canal que sea del observatory así que sí me siguen llegando los mensajes** 
 ---
 
 ## Parte 7. Comparando ambos programas
@@ -179,11 +183,11 @@ aplica a cada cliente.
 
 | Comportamiento                 | Publisher | Subscriber |
 | ------------------------------ | --------- | ---------- |
-| Conecta al Broker              |           |            |
-| Publica mensajes               |           |            |
-| Se suscribe a Topics           |           |            |
-| Finaliza su ejecución          |           |            |
-| Permanece esperando mensajes   |           |            |
+| Conecta al Broker              |     ✓     |     ✓      |
+| Publica mensajes               |     ✓     |     ✗      |
+| Se suscribe a Topics           |     ✗     |     ✓      |
+| Finaliza su ejecución          |     ✓     |     ✗      |
+| Permanece esperando mensajes   |     ✗     |     ✓     |
 |                                |           |            |
 
 Comenta las diferencias con el asesor.
