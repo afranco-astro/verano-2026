@@ -218,16 +218,19 @@ git push
 ## Preguntas de reflexión
 
 1. ¿Qué hace la línea `import paho.mqtt.client as mqtt`?
+Si no entiendo mal es para que la computadora o programa entienda que se ve a utilizar esa librería para ser más especificos el modulo de cliente dentro de esa librería el cual nos permitirá conectarnos o que al menos sepan que utilizaremos el broker.
 
 2. ¿Por qué guardamos `BROKER`, `PORT` y `TOPIC` en variables en lugar de escribirlos
    directamente en el código?
+   Tengo entendido que primero se escriben como mayusulas para diferenciar y decir que esas son constantes, para comenzar el BROKER es así para poder tener más movimiento al momento de poder conectarlo, puedes conectarlo tanto a la computadora local como a un servidor. El PORT es el que utilizan todos pero igual puede cambiar.
 
 3. ¿Qué ocurre si ejecutas el publisher cuando el Broker no está en ejecución?
+No sé con seguridad pero si no esta corriendo, puede que no llegue el mensaje a ningun lado o que el programa tenga una "falla" y no termine de copilar
 
 4. ¿Para qué sirve el entorno virtual?
-
+Nos sirve para tener aislado un proyecto y que no tenga problemas con otros proyectos, además nos ayuda a tener diferentes versiones de un mismo programa de ser necesario se puede crear un .venv con otra versión y que no afecte a la primera, es como aislar un pequeño sector para que no afecte el resto de mi computadora ni que el resto lo afecte a ese entorno.
 5. ¿Qué pasaría si alguien clona el repositorio y ejecuta `pip install -r requirements.txt`?
-
+Se replicará ese mismo repositorio en la otra computadora.
 ---
 
 ## Al finalizar debes tener
