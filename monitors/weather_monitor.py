@@ -4,7 +4,7 @@ import paho.mqtt.client as mqtt
 
 BROKER= "localhost"
 PORT= 1883
-TOPIC= "oan/weather"
+TOPIC= "oan/weather/+"
 client= mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 
 def on_message(client, userdata, message):
@@ -13,12 +13,15 @@ def on_message(client, userdata, message):
     timestamp = datetime.now().strftime("%H:%M:%S") #nos indica en que momento de a hora se esta utilizando 
 
     print("--------------------------------")
+    print(f"Enviado desde: {message.topic}")
     print(f"Received at : {timestamp}") #nos da la hora impresa junto con los datos
     print(f"Temperature : {data['temperature']['value']} °{data['temperature']['unit']}")
+    print(f"rainRate : {data['rainRate']} mm/h ")
+    print(f"cloudCover : {data['cloudCover']}%")
     print(f"Humidity    : {data['humidity']} %")
     print(f"Wind Speed  : {data['windSpeed']} m/s")
     print(f"Pressure    : {data['pressure']} hPa")
-    print(f"Dew Point   : {data['dewPoint']} °C")
+    print(f"Dew Point   : {data['dewPoint']['value2']} °{data['dewPoint']['unit2']}")
 
 
 client.on_message = on_message
