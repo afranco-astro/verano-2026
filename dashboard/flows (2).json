@@ -1,0 +1,269 @@
+[
+    {
+        "id": "f5efa6b752348e1a",
+        "type": "tab",
+        "label": "Cupula",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "191b1d35a4399d41",
+        "type": "mqtt in",
+        "z": "f5efa6b752348e1a",
+        "name": "Cupula",
+        "topic": "oan/weather",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "fd5f369288e31f70",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 870,
+        "y": 360,
+        "wires": [
+            [
+                "984e9b3b14f0836d"
+            ]
+        ]
+    },
+    {
+        "id": "984e9b3b14f0836d",
+        "type": "json",
+        "z": "f5efa6b752348e1a",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1050,
+        "y": 360,
+        "wires": [
+            [
+                "20300ea28778b3d7",
+                "832c16771cfece2f",
+                "5741fe30f1cced84"
+            ]
+        ]
+    },
+    {
+        "id": "67df6c1609859bb0",
+        "type": "ui_gauge",
+        "z": "f5efa6b752348e1a",
+        "name": "",
+        "group": "9d400c78a518e4d6",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Azimuth",
+        "label": "°",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "360",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "20300ea28778b3d7",
+        "type": "change",
+        "z": "f5efa6b752348e1a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.Azimuth",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1260,
+        "y": 360,
+        "wires": [
+            [
+                "67df6c1609859bb0"
+            ]
+        ]
+    },
+    {
+        "id": "832c16771cfece2f",
+        "type": "change",
+        "z": "f5efa6b752348e1a",
+        "name": "Wind Speed",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.isOpen",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1250,
+        "y": 440,
+        "wires": [
+            [
+                "0ef73880b940565c"
+            ]
+        ]
+    },
+    {
+        "id": "5741fe30f1cced84",
+        "type": "change",
+        "z": "f5efa6b752348e1a",
+        "name": "Status",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.Status",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1230,
+        "y": 520,
+        "wires": [
+            [
+                "f52a3c90dc42b054"
+            ]
+        ]
+    },
+    {
+        "id": "f52a3c90dc42b054",
+        "type": "ui_switch",
+        "z": "f5efa6b752348e1a",
+        "name": "Cupula",
+        "label": "switch",
+        "tooltip": "",
+        "group": "9d400c78a518e4d6",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "payload.isOpen",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 1460,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0ef73880b940565c",
+        "type": "ui_text",
+        "z": "f5efa6b752348e1a",
+        "group": "9d400c78a518e4d6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1450,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "fd5f369288e31f70",
+        "type": "mqtt-broker",
+        "name": "Local Broker",
+        "broker": "localhost",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "9d400c78a518e4d6",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "fa418380bceafb62",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "fa418380bceafb62",
+        "type": "ui_tab",
+        "name": "Cupula",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "bf149c78266e1b94",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]

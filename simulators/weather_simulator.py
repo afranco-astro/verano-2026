@@ -6,7 +6,7 @@ import paho.mqtt.client as mqtt
 
 BROKER= "localhost"
 PORT= 1883
-TOPIC= ["oan/weather/station1", "oan/weather/station2"]
+TOPIC= ["oan/weather"]
 unidades = ["C", "F", "K"]
 
 
@@ -16,7 +16,7 @@ client.connect(BROKER, PORT)
 while True: #se utiliza mucho el true para hacer ciclos infinito
     weather_data = {
             "temperature": {
-                "value": round(uniform(10.0, 25.0), 1),
+                "value": round(uniform(10.0, 38.0), 1),
                 "unit":choice(unidades),
             },
             "rainRate": round(uniform(10.0, 25.0), 1),
