@@ -1,0 +1,50 @@
+[
+    {
+        "id": "79bc6a4d0c54da70",
+        "type": "ui_text",
+        "z": "16961a0a29099973",
+        "group": "d2aa61ca7e6b5574",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Status",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 2130,
+        "y": 2400,
+        "wires": []
+    },
+    {
+        "id": "d2aa61ca7e6b5574",
+        "type": "ui_group",
+        "name": "GeneralDesign",
+        "tab": "d7afbd510070ff30",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d7afbd510070ff30",
+        "type": "ui_tab",
+        "name": "General",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "b2095777ade041c3",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
